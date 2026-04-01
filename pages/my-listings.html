@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Listings – Airbnb   </title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/cards.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="icon" href="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/airbnb-favicon.png">
+</head>
+<body>
+<div class="page-wrapper">
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="/airbnb-clone/index.html" class="navbar-logo">
+        <img src="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/Airbnb-Logo.png" alt="Airbnb Logo" class="logo-img">
+      </a>
+      <div class="navbar-right">
+        <a href="host-dashboard.html" class="navbar-host">Dashboard</a>
+        <button class="navbar-profile-btn" id="profile-btn">
+          <span class="hamburger">☰</span><span class="profile-icon">👤</span>
+        </button>
+      </div>
+    </div>
+    <div class="profile-dropdown" id="profile-dropdown">
+      <div class="dropdown-group">
+        <a href="profile.html" class="dropdown-item bold">Arjun Sharma</a>
+        <a href="host-dashboard.html" class="dropdown-item">Dashboard</a>
+        <a href="add-listing.html" class="dropdown-item">Add listing</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="my-listings-page">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <h1>My listings</h1>
+        <button class="btn-primary" onclick="window.location.href='add-listing.html'">+ Add new listing</button>
+      </div>
+      <p style="color:var(--text-light);font-size:15px;margin-bottom:32px;">Manage your properties</p>
+
+      <div id="host-listings-grid" class="listings-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+<script>
+async function loadHostListings() {
+  const res = await fetch('../data/listings.json');
+  const all = await res.json();
+  // Show first 3 as "host's listings"
+  const myListings = all.slice(0, 3);
+  const grid = document.getElementById('host-listings-grid');
+
+  myListings.forEach(listing => {
+    const wishlisted = isWishlisted(listing.id);
+    const card = document.createElement('div');
+    card.className = 'listing-card';
+    card.innerHTML = `
+      <div class="card-image" style="position:relative;">
+        <img src="${listing.image}" alt="${listing.title}" loading="lazy">
+        <div style="position:absolute;bottom:12px;left:12px;display:flex;gap:8px;">
+          <span style="background:white;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;color:var(--primary);">● Active</span>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-top">
+          <div class="card-location">${listing.location}</div>
+          <div class="card-rating">★ ${listing.rating}</div>
+        </div>
+        <div class="card-title">${listing.title}</div>
+        <div class="card-price"><strong>₹${listing.price.toLocaleString('en-IN')}</strong>/night</div>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <button class="btn-outline" style="font-size:12px;padding:6px 14px;" onclick="event.stopPropagation();showToast('Editing listing...')">Edit</button>
+          <button class="btn-outline" style="font-size:12px;padding:6px 14px;" onclick="event.stopPropagation();showToast('Calendar view coming soon!')">📅 Calendar</button>
+          <button class="btn-outline" style="font-size:12px;padding:6px 14px;color:var(--primary);border-color:var(--primary);" onclick="event.stopPropagation();showToast('Listing paused')">Pause</button>
+        </div>
+      </div>
+    `;
+    card.addEventListener('click', () => window.location.href = `listing-details.html?id=${listing.id}`);
+    grid.appendChild(card);
+  });
+}
+document.addEventListener('DOMContentLoaded', loadHostListings);
+</script>
+</body>
+</html>

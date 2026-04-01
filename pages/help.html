@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Centre – Airbnb </title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="icon" href="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/airbnb-favicon.png">
+  <style>
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 20px 0;
+      font-size: 16px;
+      font-weight: 500;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-main);
+      color: var(--text-dark);
+    }
+    .faq-question:hover { color: var(--primary); }
+    .faq-arrow { font-size: 20px; transition: transform 0.3s ease; flex-shrink: 0; }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-answer-inner { padding: 0 0 20px; font-size: 15px; color: var(--text-medium); line-height: 1.7; }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="/airbnb-clone/index.html" class="navbar-logo">
+        <img src="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/Airbnb-Logo.png" alt="Airbnb Logo" class="logo-img">
+      </a>
+      <div class="navbar-right">
+        <button class="navbar-profile-btn" id="profile-btn">
+          <span class="hamburger">☰</span><span class="profile-icon">👤</span>
+        </button>
+      </div>
+    </div>
+    <div class="profile-dropdown" id="profile-dropdown">
+      <div class="dropdown-group">
+        <a href="login.html" class="dropdown-item bold">Log in</a>
+        <a href="signup.html" class="dropdown-item">Sign up</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="help-page">
+    <div class="container">
+      <!-- Hero -->
+      <div class="help-hero">
+        <h1>How can we help you?</h1>
+        <p>Search our Help Centre for quick answers</p>
+        <div class="help-search">
+          <input type="text" id="help-search-input" placeholder="Search for help topics..." onkeydown="if(event.key==='Enter')searchHelp()">
+          <button onclick="searchHelp()">🔍</button>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="help-categories">
+        <div class="help-category" onclick="showToast('Loading booking help...')">
+          <div class="icon">🏨</div>
+          <h3>Booking & reservations</h3>
+          <p>How to book, edit, or cancel a stay</p>
+        </div>
+        <div class="help-category" onclick="showToast('Loading payments help...')">
+          <div class="icon">💳</div>
+          <h3>Payments & refunds</h3>
+          <p>Billing, invoices, and refund requests</p>
+        </div>
+        <div class="help-category" onclick="showToast('Loading account help...')">
+          <div class="icon">👤</div>
+          <h3>Account & identity</h3>
+          <p>Login, verification, and account settings</p>
+        </div>
+        <div class="help-category" onclick="showToast('Loading hosting help...')">
+          <div class="icon">🏠</div>
+          <h3>Hosting</h3>
+          <p>Everything about listing and managing guests</p>
+        </div>
+        <div class="help-category" onclick="showToast('Loading safety help...')">
+          <div class="icon">🛡️</div>
+          <h3>Safety & accessibility</h3>
+          <p>AirCover, trust, and accessibility features</p>
+        </div>
+        <div class="help-category" onclick="showToast('Loading travel help...')">
+          <div class="icon">✈️</div>
+          <h3>Travel tips</h3>
+          <p>Making the most of your Airbnb experience</p>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div style="max-width:720px;margin:0 auto;">
+        <h2 style="font-size:24px;font-weight:700;margin-bottom:8px;">Frequently asked questions</h2>
+        <p style="color:var(--text-light);margin-bottom:32px;">Quick answers to common questions</p>
+
+        <div class="faq-item">
+          <button class="faq-question">How do I book a stay? <span class="faq-arrow">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">To book a stay, browse listings on our platform, select your desired property, choose your check-in and check-out dates, specify the number of guests, and click "Reserve." You'll be guided through the payment process. Once confirmed, you'll receive a booking confirmation email.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">What is Airbnb's cancellation policy? <span class="faq-arrow">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Cancellation policies vary by listing — each host sets their own policy (Flexible, Moderate, or Strict). You can find the cancellation policy on any listing page before you book. Generally, flexible policies offer full refunds if cancelled 24+ hours before check-in.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">How do I become a host? <span class="faq-arrow">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Click "Become a host" at the top of the page. You'll be guided through listing your property — describe your space, add photos, set your price, and define your availability. Your listing goes live after review. Airbnb charges a small host service fee on each booking.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">What is AirCover? <span class="faq-arrow">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">AirCover is our comprehensive protection for both guests and hosts. For guests, it includes booking protection, check-in guarantee, 24-hour safety line, and listing accuracy guarantee. For hosts, it includes up to $3 million in damage protection and $1 million liability insurance — all at no additional cost.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">How do I contact my host? <span class="faq-arrow">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Once you have a confirmed booking, you can message your host directly through Airbnb's messaging system. Go to your trip details and click "Message host." All communication is kept on platform for safety and record-keeping purposes.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">How are payments processed? <span class="faq-arrow">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Airbnb accepts credit/debit cards, UPI, net banking, and various other payment methods. Payment is collected when you book. Hosts receive payment 24 hours after guest check-in. All transactions are secured with industry-standard encryption.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">What should I do if there's a problem during my stay? <span class="faq-arrow">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">First, try to resolve it with your host via Airbnb messaging. If that doesn't work, you can contact Airbnb Support within 72 hours of the issue. Document everything with photos. Our Resolution Centre can help mediate disputes. For emergencies, contact local authorities first.</div></div>
+        </div>
+      </div>
+
+      <!-- Contact section -->
+      <div style="max-width:720px;margin:48px auto 0;text-align:center;">
+        <h3 style="font-size:20px;font-weight:600;margin-bottom:8px;">Still need help?</h3>
+        <p style="color:var(--text-light);margin-bottom:24px;">Our support team is available 24/7</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+          <button class="btn-primary" onclick="showToast('Connecting to chat support...')">💬 Live chat</button>
+          <button class="btn-outline" onclick="showToast('Opening email support...')">✉️ Email us</button>
+          <button class="btn-outline" onclick="showToast('Helpline: 1800-XXX-XXXX (Toll-free)')">📞 Call us</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+<script src="../js/animations.js"></script>
+<script>
+function searchHelp() {
+  const val = document.getElementById('help-search-input').value;
+  if (val.trim()) showToast(`Searching for: "${val}"...`);
+}
+</script>
+</body>
+</html>

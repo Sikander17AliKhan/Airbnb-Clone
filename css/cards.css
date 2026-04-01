@@ -1,0 +1,140 @@
+/* ===== CARDS MODULE ===== */
+
+/* Listing card hover states already in style.css */
+
+/* Listing card image overlay on hover */
+.card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  transition: background 0.3s ease;
+  border-radius: var(--radius-md);
+  pointer-events: none;
+}
+.listing-card:hover .card-image::after {
+  background: rgba(0,0,0,0.04);
+}
+
+/* Row scroll arrows */
+.row-scroll-wrapper {
+  position: relative;
+}
+
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.row-scroll-wrapper:hover .scroll-arrow { opacity: 1; pointer-events: all; }
+.scroll-arrow:hover { transform: translateY(-50%) scale(1.1); }
+.scroll-arrow.prev { left: -18px; }
+.scroll-arrow.next { right: -18px; }
+
+/* ===== DESTINATION CARD ===== */
+.destination-grid-masonry {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  gap: 12px;
+}
+
+.destination-grid-masonry .dest-0 {
+  grid-row: span 2;
+}
+
+/* ===== HOST CARD ===== */
+.host-card {
+  background: var(--bg-light);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.host-stats {
+  display: flex;
+  gap: 24px;
+  margin-top: 12px;
+}
+.host-stat { text-align: center; }
+.host-stat .num { font-size: 18px; font-weight: 700; }
+.host-stat .label { font-size: 12px; color: var(--text-light); }
+
+/* ===== PRICE TAG ===== */
+.price-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+}
+
+/* ===== TRIP STATUS CARD ===== */
+.trips-empty {
+  text-align: center;
+  padding: 80px 24px;
+}
+.trips-empty .empty-icon { font-size: 64px; margin-bottom: 20px; }
+.trips-empty h3 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+.trips-empty p { font-size: 16px; color: var(--text-light); margin-bottom: 24px; }
+
+/* ===== CATEGORY ICON MAP ===== */
+.category-beach::before { content: '🏖️'; }
+.category-mountain::before { content: '⛰️'; }
+.category-city::before { content: '🏙️'; }
+.category-camping::before { content: '⛺'; }
+.category-cabins::before { content: '🛖'; }
+.category-islands::before { content: '🏝️'; }
+.category-houseboat::before { content: '⛵'; }
+
+/* ===== PAGINATION ===== */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+.page-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  background: none;
+  transition: all 0.2s ease;
+  font-family: var(--font-main);
+  color: var(--text-dark);
+}
+.page-btn:hover { background: var(--bg-light); }
+.page-btn.active { border-color: var(--text-dark); font-weight: 600; }
+.page-btn.arrow { border-color: var(--border); }

@@ -1,0 +1,64 @@
+<!-- NAVBAR COMPONENT - reused across pages via JS inject or copy-paste -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <!-- Logo -->
+      <a href="index.html" class="navbar-logo">
+        <img src="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/Airbnb-Logo.png" alt="Airbnb Logo" class="logo-img">
+      </a>
+
+    <!-- Center tabs -->
+    <div class="navbar-tabs">
+      <div class="nav-tab-wrap">
+        <a href="../index.html" class="nav-tab active" id="tab-homes">
+          <span class="tab-emoji">🏠</span>
+          Homes
+        </a>
+      </div>
+      <div class="nav-tab-wrap">
+        <span class="tab-badge">NEW</span>
+        <a href="#" class="nav-tab" id="tab-exp">
+          <span class="tab-emoji">🎈</span>
+          Experiences
+        </a>
+      </div>
+      <div class="nav-tab-wrap">
+        <span class="tab-badge">NEW</span>
+        <a href="#" class="nav-tab" id="tab-svc">
+          <span class="tab-emoji">🛎️</span>
+          Services
+        </a>
+      </div>
+    </div>
+
+    <!-- Compact search (visible on scroll) -->
+    <div class="navbar-search-compact" id="compact-search">
+      <div class="compact-field">Anywhere</div>
+      <div class="compact-field">Any week</div>
+      <div class="compact-field">Add guests</div>
+      <button class="compact-search-btn">🔍</button>
+    </div>
+
+    <!-- Right side -->
+    <div class="navbar-right">
+      <a href="../pages/host-dashboard.html" class="navbar-host">Become a host</a>
+      <button class="navbar-globe" aria-label="Language">🌐</button>
+      <button class="navbar-profile-btn" id="profile-btn" aria-label="User menu">
+        <span class="hamburger">☰</span>
+        <span class="profile-icon">👤</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Dropdown -->
+  <div class="profile-dropdown" id="profile-dropdown">
+    <div class="dropdown-group">
+      <a href="../pages/signup.html" class="dropdown-item bold">Sign up</a>
+      <a href="../pages/login.html" class="dropdown-item">Log in</a>
+    </div>
+    <div class="dropdown-group">
+      <a href="../pages/host-dashboard.html" class="dropdown-item">Host your home</a>
+      <a href="#" class="dropdown-item">Host an experience</a>
+      <a href="../pages/help.html" class="dropdown-item">Help Centre</a>
+    </div>
+  </div>
+</nav>

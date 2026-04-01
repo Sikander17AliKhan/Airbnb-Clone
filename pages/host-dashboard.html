@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Host Dashboard – Airbnb </title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/cards.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="icon" href="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/airbnb-favicon.png">
+</head>
+<body>
+<div class="page-wrapper">
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="/airbnb-clone/index.html" class="navbar-logo">
+        <img src="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/Airbnb-Logo.png" alt="Airbnb Logo" class="logo-img">
+      </a>
+      <div class="navbar-right">
+        <a href="../index.html" class="navbar-host">Switch to travelling</a>
+        <button class="navbar-globe">🌐</button>
+        <button class="navbar-profile-btn" id="profile-btn">
+          <span class="hamburger">☰</span><span class="profile-icon">👤</span>
+        </button>
+      </div>
+    </div>
+    <div class="profile-dropdown" id="profile-dropdown">
+      <div class="dropdown-group">
+        <a href="profile.html" class="dropdown-item bold">Arjun Sharma</a>
+        <a href="profile.html" class="dropdown-item">Edit profile</a>
+      </div>
+      <div class="dropdown-group">
+        <a href="my-listings.html" class="dropdown-item">My listings</a>
+        <a href="add-listing.html" class="dropdown-item">Add listing</a>
+        <a href="my-trips.html" class="dropdown-item">My trips</a>
+        <a href="help.html" class="dropdown-item">Help Centre</a>
+      </div>
+      <div class="dropdown-group">
+        <a href="login.html" class="dropdown-item">Log out</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="dashboard-page">
+    <div class="container">
+      <h1 class="dashboard-greeting">Good afternoon, Arjun 👋</h1>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <div class="stat-icon">💰</div>
+          <div class="stat-value" data-count="87420">₹0</div>
+          <div class="stat-label">Total earnings (₹)</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-icon">📅</div>
+          <div class="stat-value" data-count="24">0</div>
+          <div class="stat-label">Total bookings</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-value">4.93</div>
+          <div class="stat-label">Average rating</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-icon">🏠</div>
+          <div class="stat-value" data-count="3">0</div>
+          <div class="stat-label">Active listings</div>
+        </div>
+      </div>
+
+      <!-- Quick actions -->
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;">
+        <button class="btn-primary btn-ripple" onclick="window.location.href='add-listing.html'">+ Add new listing</button>
+        <button class="btn-outline" onclick="window.location.href='my-listings.html'">View all listings</button>
+        <button class="btn-outline" onclick="showToast('Calendar view coming soon!')">📅 Calendar</button>
+        <button class="btn-outline" onclick="showToast('Analytics coming soon!')">📊 Analytics</button>
+      </div>
+
+      <!-- Dashboard cards -->
+      <div class="dashboard-grid">
+        <!-- Upcoming reservations -->
+        <div class="dashboard-card">
+          <h3>Upcoming reservations</h3>
+          <div id="reservations-list">
+            <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);align-items:center">
+              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=100&q=80"
+                style="width:60px;height:60px;border-radius:var(--radius-sm);object-fit:cover;" alt="">
+              <div style="flex:1">
+                <div style="font-weight:600;font-size:14px;">Rohan Verma</div>
+                <div style="font-size:13px;color:var(--text-light);">South Extension Flat · Mar 20–22</div>
+                <div style="font-size:12px;background:var(--primary-light);color:var(--primary);display:inline-block;padding:2px 8px;border-radius:var(--radius-full);margin-top:4px;font-weight:600;">Confirmed</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-weight:700;">₹8,400</div>
+                <div style="font-size:12px;color:var(--text-light);">2 nights</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);align-items:center">
+              <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?w=100&q=80"
+                style="width:60px;height:60px;border-radius:var(--radius-sm);object-fit:cover;" alt="">
+              <div style="flex:1">
+                <div style="font-weight:600;font-size:14px;">Ananya Singh</div>
+                <div style="font-size:13px;color:var(--text-light);">Gurugram Studio · Mar 25–28</div>
+                <div style="font-size:12px;background:#fff8e1;color:#f57f17;display:inline-block;padding:2px 8px;border-radius:var(--radius-full);margin-top:4px;font-weight:600;">Pending</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-weight:700;">₹10,500</div>
+                <div style="font-size:12px;color:var(--text-light);">3 nights</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px;padding:16px 0;align-items:center">
+              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=100&q=80"
+                style="width:60px;height:60px;border-radius:var(--radius-sm);object-fit:cover;" alt="">
+              <div style="flex:1">
+                <div style="font-weight:600;font-size:14px;">Karan Mehta</div>
+                <div style="font-size:13px;color:var(--text-light);">Greater Noida Apt · Apr 2–5</div>
+                <div style="font-size:12px;background:var(--primary-light);color:var(--primary);display:inline-block;padding:2px 8px;border-radius:var(--radius-full);margin-top:4px;font-weight:600;">Confirmed</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-weight:700;">₹8,400</div>
+                <div style="font-size:12px;color:var(--text-light);">3 nights</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent reviews -->
+        <div class="dashboard-card">
+          <h3>Recent reviews</h3>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-light);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">R</div>
+                <div>
+                  <div style="font-size:14px;font-weight:600;">Rohan V.</div>
+                  <div style="font-size:12px;color:var(--text-light);">★★★★★ · March 2026</div>
+                </div>
+              </div>
+              <p style="font-size:13px;color:var(--text-medium);">Absolutely loved the property! Arjun is a great host, very responsive and helpful.</p>
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-light);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">S</div>
+                <div>
+                  <div style="font-size:14px;font-weight:600;">Shreya P.</div>
+                  <div style="font-size:12px;color:var(--text-light);">★★★★★ · Feb 2026</div>
+                </div>
+              </div>
+              <p style="font-size:13px;color:var(--text-medium);">Perfect stay! Clean, spacious, and exactly as described. Will definitely book again.</p>
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-light);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">V</div>
+                <div>
+                  <div style="font-size:14px;font-weight:600;">Vishal K.</div>
+                  <div style="font-size:12px;color:var(--text-light);">★★★★☆ · Jan 2026</div>
+                </div>
+              </div>
+              <p style="font-size:13px;color:var(--text-medium);">Great location and amenities. Minor issues with WiFi but overall excellent experience.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Earnings chart (simple CSS bar chart) -->
+        <div class="dashboard-card">
+          <h3>Monthly earnings</h3>
+          <div style="display:flex;gap:8px;align-items:flex-end;height:140px;padding-top:16px;">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+              <div style="flex:1;width:100%;background:var(--primary-light);border-radius:4px 4px 0 0;min-height:40px;height:60%;position:relative;overflow:hidden;">
+                <div style="position:absolute;bottom:0;left:0;right:0;background:var(--primary);height:60%;border-radius:4px 4px 0 0;transition:height 1s ease;"></div>
+              </div>
+              <span style="font-size:11px;color:var(--text-light);">Oct</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+              <div style="flex:1;width:100%;background:var(--primary-light);border-radius:4px 4px 0 0;position:relative;overflow:hidden;">
+                <div style="position:absolute;bottom:0;left:0;right:0;background:var(--primary);height:80%;border-radius:4px 4px 0 0;"></div>
+              </div>
+              <span style="font-size:11px;color:var(--text-light);">Nov</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+              <div style="flex:1;width:100%;background:var(--primary-light);border-radius:4px 4px 0 0;position:relative;overflow:hidden;">
+                <div style="position:absolute;bottom:0;left:0;right:0;background:var(--primary);height:100%;border-radius:4px 4px 0 0;"></div>
+              </div>
+              <span style="font-size:11px;color:var(--text-light);">Dec</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+              <div style="flex:1;width:100%;background:var(--primary-light);border-radius:4px 4px 0 0;position:relative;overflow:hidden;">
+                <div style="position:absolute;bottom:0;left:0;right:0;background:var(--primary);height:50%;border-radius:4px 4px 0 0;"></div>
+              </div>
+              <span style="font-size:11px;color:var(--text-light);">Jan</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+              <div style="flex:1;width:100%;background:var(--primary-light);border-radius:4px 4px 0 0;position:relative;overflow:hidden;">
+                <div style="position:absolute;bottom:0;left:0;right:0;background:var(--primary);height:70%;border-radius:4px 4px 0 0;"></div>
+              </div>
+              <span style="font-size:11px;color:var(--text-light);">Feb</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;">
+              <div style="flex:1;width:100%;background:var(--primary-light);border-radius:4px 4px 0 0;position:relative;overflow:hidden;">
+                <div style="position:absolute;bottom:0;left:0;right:0;background:var(--primary);height:90%;border-radius:4px 4px 0 0;"></div>
+              </div>
+              <span style="font-size:11px;color:var(--text-light);">Mar</span>
+            </div>
+          </div>
+          <div style="margin-top:16px;font-size:13px;color:var(--text-light);">
+            ▲ 18% vs last month · ₹87,420 total
+          </div>
+        </div>
+
+        <!-- Listing performance -->
+        <div class="dashboard-card">
+          <h3>Listing performance</h3>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                <span style="font-size:13px;font-weight:500;">South Extension Home</span>
+                <span style="font-size:13px;font-weight:600;">92%</span>
+              </div>
+              <div style="height:8px;background:var(--bg-light);border-radius:4px;overflow:hidden;">
+                <div style="height:100%;width:92%;background:var(--primary);border-radius:4px;"></div>
+              </div>
+              <div style="font-size:12px;color:var(--text-light);margin-top:4px;">Occupancy rate</div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                <span style="font-size:13px;font-weight:500;">Gurugram Studio</span>
+                <span style="font-size:13px;font-weight:600;">78%</span>
+              </div>
+              <div style="height:8px;background:var(--bg-light);border-radius:4px;overflow:hidden;">
+                <div style="height:100%;width:78%;background:var(--primary);border-radius:4px;"></div>
+              </div>
+              <div style="font-size:12px;color:var(--text-light);margin-top:4px;">Occupancy rate</div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                <span style="font-size:13px;font-weight:500;">Greater Noida Apt</span>
+                <span style="font-size:13px;font-weight:600;">65%</span>
+              </div>
+              <div style="height:8px;background:var(--bg-light);border-radius:4px;overflow:hidden;">
+                <div style="height:100%;width:65%;background:var(--primary);border-radius:4px;"></div>
+              </div>
+              <div style="font-size:12px;color:var(--text-light);margin-top:4px;">Occupancy rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+<script src="../js/animations.js"></script>
+</body>
+</html>

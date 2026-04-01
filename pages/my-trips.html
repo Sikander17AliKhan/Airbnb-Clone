@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Trips – Airbnb </title>
+  <link rel="icon" href="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/airbnb-favicon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+<div class="page-wrapper">
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="/airbnb-clone/index.html" class="navbar-logo">
+        <img src="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/Airbnb-Logo.png" alt="Airbnb Logo" class="logo-img">
+      </a>
+      <div class="navbar-right">
+        <a href="/airbnb-clone/pages/host-dashboard.html" class="navbar-host">Become a host</a>
+        <button class="navbar-globe">🌐</button>
+        <button class="navbar-profile-btn" id="profile-btn">
+          <span class="hamburger">☰</span><span class="profile-icon">👤</span>
+        </button>
+      </div>
+    </div>
+    <div class="profile-dropdown" id="profile-dropdown">
+      <div class="dropdown-group">
+        <a href="/airbnb-clone/pages/profile.html" class="dropdown-item bold">Arjun Sharma</a>
+        <a href="/airbnb-clone/pages/wishlist.html" class="dropdown-item">Wishlists</a>
+        <a href="/airbnb-clone/pages/my-trips.html" class="dropdown-item">Trips</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="trips-page">
+    <div class="container">
+      <h1>Trips</h1>
+
+      <!-- Tabs -->
+      <div class="profile-tabs" style="margin-bottom:32px;">
+        <button class="profile-tab active" onclick="showTrips('upcoming')">Upcoming</button>
+        <button class="profile-tab" onclick="showTrips('past')">Past trips</button>
+        <button class="profile-tab" onclick="showTrips('cancelled')">Cancelled</button>
+      </div>
+
+      <!-- Upcoming Trips -->
+      <div id="trips-upcoming">
+        <div class="trip-card reveal">
+          <div class="trip-image">
+            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&q=80" alt="South Extension Home">
+          </div>
+          <div class="trip-info">
+            <div class="trip-title">Modern South Extension Home</div>
+            <div class="trip-location">📍 New Delhi, India</div>
+            <div class="trip-dates">📅 March 20–22, 2026 · 2 nights</div>
+            <div style="font-size:14px;color:var(--text-medium);margin-bottom:16px;">👤 Hosted by Utkarsh · 1 guest</div>
+            <span class="trip-status upcoming">Upcoming</span>
+            <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;">
+              <button class="btn-outline" style="font-size:13px;padding:8px 16px;" onclick="showToast('Check-in: 3:00 PM · 12, South Ex Part 1, New Delhi')">Get directions</button>
+              <button class="btn-outline" style="font-size:13px;padding:8px 16px;" onclick="showToast('Messaging host...')">Message host</button>
+              <button class="btn-outline" style="font-size:13px;padding:8px 16px;color:var(--primary);border-color:var(--primary);" onclick="showToast('Cancellation policy: Free before Mar 17')">Cancel reservation</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Past trips -->
+      <div id="trips-past" style="display:none;">
+        <div class="trip-card reveal">
+          <div class="trip-image">
+            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80" alt="Goa Villa">
+          </div>
+          <div class="trip-info">
+            <div class="trip-title">Beachfront Villa in Goa</div>
+            <div class="trip-location">📍 North Goa, Goa</div>
+            <div class="trip-dates">📅 January 10–15, 2026 · 5 nights</div>
+            <div style="font-size:14px;color:var(--text-medium);margin-bottom:16px;">👤 Hosted by Anjali · 4 guests</div>
+            <span class="trip-status">Completed</span>
+            <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;">
+              <button class="btn-primary" style="font-size:13px;padding:8px 16px;" onclick="showToast('Review submitted! ★★★★★')">Write a review</button>
+              <button class="btn-outline" style="font-size:13px;padding:8px 16px;" onclick="window.location.href='listing-details.html?id=4'">View listing</button>
+              <button class="btn-outline" style="font-size:13px;padding:8px 16px;" onclick="showToast('Booking again!')">Book again</button>
+            </div>
+          </div>
+        </div>
+        <div class="trip-card reveal">
+          <div class="trip-image">
+            <img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=400&q=80" alt="Manali Cabin">
+          </div>
+          <div class="trip-info">
+            <div class="trip-title">Cozy Mountain Retreat</div>
+            <div class="trip-location">📍 Manali, Himachal Pradesh</div>
+            <div class="trip-dates">📅 December 24–28, 2025 · 4 nights</div>
+            <div style="font-size:14px;color:var(--text-medium);margin-bottom:16px;">👤 Hosted by Vikram · 2 guests</div>
+            <span class="trip-status">Completed</span>
+            <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;">
+              <button class="btn-primary" style="font-size:13px;padding:8px 16px;" onclick="showToast('Thanks for reviewing!')">Write a review</button>
+              <button class="btn-outline" style="font-size:13px;padding:8px 16px;" onclick="window.location.href='listing-details.html?id=3'">View listing</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cancelled -->
+      <div id="trips-cancelled" style="display:none;">
+        <div class="trips-empty">
+          <div class="empty-icon">🚫</div>
+          <h3>No cancelled trips</h3>
+          <p>When you cancel a booking, it'll show up here.</p>
+          <button class="btn-primary" onclick="window.location.href='../index.html'">Plan a trip</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+<script>
+function showTrips(type) {
+  ['upcoming','past','cancelled'].forEach(t => {
+    document.getElementById(`trips-${t}`).style.display = t === type ? 'block' : 'none';
+  });
+  document.querySelectorAll('.profile-tab').forEach((tab, i) => {
+    tab.classList.toggle('active', ['upcoming','past','cancelled'][i] === type);
+  });
+}
+</script>
+</body>
+</html>

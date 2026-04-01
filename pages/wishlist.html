@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlists – Airbnb </title>
+  <link rel="icon" href="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/airbnb-favicon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/cards.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+<div class="page-wrapper">
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="/airbnb-clone/index.html" class="navbar-logo">
+        <img src="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/Airbnb-Logo.png" alt="Airbnb Logo" class="logo-img">
+      </a>
+      <div class="navbar-right">
+        <a href="host-dashboard.html" class="navbar-host">Become a host</a>
+        <button class="navbar-globe">🌐</button>
+        <button class="navbar-profile-btn" id="profile-btn">
+          <span class="hamburger">☰</span><span class="profile-icon">👤</span>
+        </button>
+      </div>
+    </div>
+    <div class="profile-dropdown" id="profile-dropdown">
+      <div class="dropdown-group">
+        <a href="/airbnb-clone/pages/signup.html" class="dropdown-item bold">Sign up</a>
+        <a href="/airbnb-clone/pages/login.html" class="dropdown-item">Log in</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wishlist-page">
+    <div class="container">
+      <h1 class="wishlist-title">Wishlists</h1>
+      <p class="wishlist-subtitle" id="wishlist-subtitle">Your saved places will appear here</p>
+      <div class="wishlist-grid" id="wishlist-grid"></div>
+      <div id="wishlist-empty" style="display:none" class="trips-empty">
+        <div class="empty-icon">🤍</div>
+        <h3>No saved listings yet</h3>
+        <p>Click the heart icon on any listing to save it to your wishlist.</p>
+        <button class="btn-primary" onclick="window.location.href='listings.html'">Explore stays</button>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+<script>
+async function loadWishlist() {
+  const res = await fetch('../data/listings.json');
+  const all = await res.json();
+  const ids = JSON.parse(localStorage.getItem('airbnb_wishlist') || '[]');
+  const saved = all.filter(l => ids.includes(l.id));
+  const grid = document.getElementById('wishlist-grid');
+  const empty = document.getElementById('wishlist-empty');
+  const subtitle = document.getElementById('wishlist-subtitle');
+
+  if (!saved.length) {
+    grid.style.display = 'none';
+    empty.style.display = 'block';
+    subtitle.textContent = '0 saved places';
+    return;
+  }
+  subtitle.textContent = `${saved.length} saved place${saved.length > 1 ? 's' : ''}`;
+  saved.forEach(l => grid.appendChild(createListingCard(l)));
+}
+document.addEventListener('DOMContentLoaded', loadWishlist);
+</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book your stay – Airbnb </title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="icon" href="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/airbnb-favicon.png">
+</head>
+<body data-price="4200">
+<div class="page-wrapper">
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="/airbnb-clone/index.html" class="navbar-logo">
+        <img src="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/Airbnb-Logo.png" alt="Airbnb Logo" class="logo-img">
+      </a>
+      <div class="navbar-right">
+        <button class="navbar-profile-btn" id="profile-btn">
+          <span class="hamburger">☰</span><span class="profile-icon">👤</span>
+        </button>
+      </div>
+    </div>
+    <div class="profile-dropdown" id="profile-dropdown">
+      <div class="dropdown-group">
+        <a href="login.html" class="dropdown-item bold">Log in</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="booking-page">
+    <div class="container">
+      <h2 style="font-size:14px;font-weight:500;color:var(--text-light);margin-bottom:8px">
+        <a href="listing-details.html" style="color:var(--text-dark);text-decoration:underline">← Back to listing</a>
+      </h2>
+      <div class="booking-page-layout">
+        <!-- Left: booking form -->
+        <div class="booking-steps">
+          <h2>Confirm and pay</h2>
+          
+          <!-- Trip Details -->
+          <div class="step-section">
+            <h3>Your trip</h3>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+              <div>
+                <div style="font-weight:600;margin-bottom:4px">Dates</div>
+                <div style="font-size:14px;color:var(--text-light)">3/20/2026 – 3/22/2026</div>
+              </div>
+              <a href="#" style="font-size:14px;font-weight:500;text-decoration:underline">Edit</a>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-weight:600;margin-bottom:4px">Guests</div>
+                <div style="font-size:14px;color:var(--text-light)">1 guest</div>
+              </div>
+              <a href="#" style="font-size:14px;font-weight:500;text-decoration:underline">Edit</a>
+            </div>
+          </div>
+
+          <!-- Login required -->
+          <div class="step-section">
+            <h3>Log in or sign up to book</h3>
+            <button class="btn-primary" style="width:100%;padding:14px;font-size:15px;border-radius:var(--radius-md)" onclick="window.location.href='login.html'">
+              Continue
+            </button>
+          </div>
+
+          <!-- Payment -->
+          <div class="step-section">
+            <h3>Pay with</h3>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <label style="border:1.5px solid var(--text-dark);border-radius:var(--radius-md);padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer">
+                <input type="radio" name="payment" checked style="accent-color:var(--primary)"> 
+                <span style="font-size:18px">💳</span> Credit / Debit card
+              </label>
+              <label style="border:1.5px solid var(--border);border-radius:var(--radius-md);padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer">
+                <input type="radio" name="payment" style="accent-color:var(--primary)"> 
+                <span style="font-size:18px">📱</span> UPI
+              </label>
+              <label style="border:1.5px solid var(--border);border-radius:var(--radius-md);padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer">
+                <input type="radio" name="payment" style="accent-color:var(--primary)"> 
+                <span style="font-size:18px">🏦</span> Net Banking
+              </label>
+            </div>
+
+            <div id="card-form" style="margin-top:20px">
+              <div class="form-group"><label>Card number</label>
+                <input type="text" placeholder="1234 5678 9012 3456" maxlength="19"></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div class="form-group"><label>Expiry date</label>
+                  <input type="text" placeholder="MM / YY"></div>
+                <div class="form-group"><label>CVV</label>
+                  <input type="text" placeholder="•••" maxlength="4"></div>
+              </div>
+              <div class="form-group"><label>Name on card</label>
+                <input type="text" placeholder="Full name as on card"></div>
+            </div>
+          </div>
+
+          <!-- Cancellation policy -->
+          <div class="step-section">
+            <h3>Cancellation policy</h3>
+            <p style="font-size:14px;color:var(--text-medium);line-height:1.6">
+              <strong>Free cancellation before 3/17/2026.</strong> Cancel before check-in on 3/20/2026 for a partial refund. 
+              <a href="#" style="color:var(--text-dark);font-weight:500">Learn more</a>
+            </p>
+          </div>
+
+          <!-- Ground rules -->
+          <div class="step-section">
+            <h3>Ground rules</h3>
+            <p style="font-size:14px;color:var(--text-medium);line-height:1.6">We ask every guest to remember a few simple things about what makes a great guest.</p>
+            <ul style="margin-top:12px;font-size:14px;color:var(--text-medium);list-style:disc;padding-left:20px">
+              <li style="margin-bottom:6px">Follow the house rules</li>
+              <li style="margin-bottom:6px">Treat your host's home like your own</li>
+              <li>Keep noise levels considerate of neighbours</li>
+            </ul>
+          </div>
+
+          <button class="reserve-btn btn-ripple" onclick="window.location.href='checkout.html'" style="margin-top:8px">
+            Confirm and pay
+          </button>
+          <p style="font-size:13px;color:var(--text-light);margin-top:12px;text-align:center">
+            By selecting the button above, I agree to Airbnb's 
+            <a href="#" style="color:var(--text-dark);text-decoration:underline">Terms of Service</a>, 
+            <a href="#" style="color:var(--text-dark);text-decoration:underline">Payments Terms</a>, and 
+            <a href="#" style="color:var(--text-dark);text-decoration:underline">Nondiscrimination Policy</a>.
+          </p>
+        </div>
+
+        <!-- Right: Booking summary -->
+        <div>
+          <div class="booking-card" style="position:sticky;top:100px">
+            <div style="display:flex;gap:16px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)">
+              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=200&q=80" 
+                style="width:90px;height:90px;object-fit:cover;border-radius:var(--radius-md)" alt="Listing">
+              <div>
+                <div style="font-size:13px;color:var(--text-light);margin-bottom:4px">Flat in New Delhi</div>
+                <div style="font-size:14px;font-weight:600;margin-bottom:4px">Modern South Extension Home</div>
+                <div style="font-size:13px;display:flex;align-items:center;gap:4px">★ 4.93 · <span style="color:var(--text-light)">189 reviews</span></div>
+              </div>
+            </div>
+            <div style="font-size:16px;font-weight:700;margin-bottom:16px">Price details</div>
+            <div class="price-row">
+              <span>₹4,200 × 2 nights</span><span>₹8,400</span>
+            </div>
+            <div class="price-row">
+              <span><a href="#">Cleaning fee</a></span><span>₹500</span>
+            </div>
+            <div class="price-row">
+              <span><a href="#">Airbnb service fee</a></span><span>₹1,176</span>
+            </div>
+            <div class="price-row total">
+              <span>Total</span><span>₹10,076</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="../js/app.js"></script>
+<script src="../js/animations.js"></script>
+</body>
+</html>

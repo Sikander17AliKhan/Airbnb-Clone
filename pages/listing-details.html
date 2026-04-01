@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listing Details – Airbnb </title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/cards.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="icon" href="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/airbnb-favicon.png">
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="/airbnb-clone/index.html" class="navbar-logo">
+        <img src="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/Airbnb-Logo.png" alt="Airbnb Logo" class="logo-img">
+      </a>
+      <div class="navbar-search-compact visible">
+        <div class="compact-field">Anywhere</div>
+        <div class="compact-field">Any week</div>
+        <div class="compact-field">Add guests</div>
+        <button class="compact-search-btn">🔍</button>
+      </div>
+      <div class="navbar-right">
+        <a href="../pages/host-dashboard.html" class="navbar-host">Become a host</a>
+        <button class="navbar-globe">🌐</button>
+        <button class="navbar-profile-btn" id="profile-btn">
+          <span class="hamburger">☰</span>
+          <span class="profile-icon">👤</span>
+        </button>
+      </div>
+    </div>
+    <div class="profile-dropdown" id="profile-dropdown">
+      <div class="dropdown-group">
+        <a href="signup.html" class="dropdown-item bold">Sign up</a>
+        <a href="login.html" class="dropdown-item">Log in</a>
+      </div>
+      <div class="dropdown-group">
+        <a href="host-dashboard.html" class="dropdown-item">Host your home</a>
+        <a href="help.html" class="dropdown-item">Help Centre</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- LISTING CONTENT -->
+  <main class="listing-details-page">
+    <div class="container">
+      <!-- Title Row -->
+      <div class="listing-title-row">
+        <h1 id="listing-title">Loading...</h1>
+        <div class="listing-actions">
+          <button onclick="shareHandler()">⬆️ Share</button>
+          <button id="save-btn">🤍 Save</button>
+        </div>
+      </div>
+
+      <!-- Photo Gallery -->
+      <div class="photo-gallery" id="photo-gallery">
+        <div class="gallery-main">
+          <img id="gallery-img-0" src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80" alt="Main">
+        </div>
+        <div class="gallery-thumb">
+          <img id="gallery-img-1" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80" alt="Thumb 1">
+        </div>
+        <div class="gallery-thumb">
+          <img id="gallery-img-2" src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&q=80" alt="Thumb 2">
+        </div>
+        <button class="show-all-btn">⊞ Show all photos</button>
+      </div>
+
+      <!-- Gallery Modal -->
+      <div class="gallery-modal" id="gallery-modal">
+        <div class="gallery-modal-inner">
+          <button class="modal-close">✕</button>
+          <button class="modal-nav modal-prev">‹</button>
+          <img src="" alt="Gallery">
+          <button class="modal-nav modal-next">›</button>
+          <div class="gallery-counter">1 / 3</div>
+        </div>
+      </div>
+
+      <!-- Details Layout -->
+      <div class="details-layout">
+        <!-- Left Column -->
+        <div>
+          <!-- Listing Meta -->
+          <div class="listing-meta">
+            <div id="listing-type">Entire apartment in New Delhi, India</div>
+            <span id="listing-specs">12 guests · 4 bedrooms · 4 beds · 4.5 bathrooms</span>
+          </div>
+
+          <!-- Guest Favourite Badge -->
+          <div class="guest-fav-badge" id="fav-badge">
+            <div class="badge-icon">🏆</div>
+            <div class="badge-text">
+              <strong>Guest favourite</strong>
+              <p>One of the most loved homes on Airbnb, according to guests</p>
+            </div>
+            <div class="badge-stats">
+              <div class="rating-big" id="detail-rating">4.93</div>
+              <div class="badge-stars">★★★★★</div>
+              <div class="badge-reviews" id="detail-reviews">189 Reviews</div>
+            </div>
+          </div>
+
+          <!-- Host -->
+          <div class="host-section">
+            <div class="host-avatar" id="host-avatar">U</div>
+            <div>
+              <div class="host-name" id="host-name">Hosted by Utkarsh</div>
+              <div class="host-super" id="host-super">Superhost · 6 years hosting</div>
+            </div>
+          </div>
+
+          <!-- Highlights -->
+          <div class="highlights-list">
+            <div class="highlight-item">
+              <div class="highlight-icon">🚪</div>
+              <div>
+                <strong>Self check-in</strong>
+                <p>You can check in with the building staff.</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">🏠</div>
+              <div>
+                <strong>Extra spacious</strong>
+                <p>Guests love this home's spaciousness for a comfortable stay.</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">📍</div>
+              <div>
+                <strong>Walkable area</strong>
+                <p>Guests say this area is easy to get around.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price info banner -->
+          <div style="display:flex;align-items:center;gap:10px;background:var(--bg-light);padding:16px;border-radius:var(--radius-md);margin-bottom:24px;">
+            <span style="font-size:20px">🏷️</span>
+            <span style="font-size:14px;font-weight:500">Prices include all fees</span>
+          </div>
+
+          <!-- Description -->
+          <div class="description-section">
+            <h2 class="section-title">About this place</h2>
+            <p id="listing-description">Loading description...</p>
+          </div>
+
+          <!-- Amenities -->
+          <div class="amenities-section">
+            <h2 class="section-title">What this place offers</h2>
+            <div class="amenities-grid" id="amenities-grid">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Map Placeholder -->
+          <div style="padding:24px 0;border-top:1px solid var(--border);margin-top:24px;">
+            <h2 class="section-title">Where you'll be</h2>
+            <div id="listing-map-location" style="font-size:15px;color:var(--text-light);margin-bottom:16px">New Delhi, India</div>
+            <div style="background:var(--bg-light);border-radius:var(--radius-lg);height:320px;display:flex;align-items:center;justify-content:center;font-size:48px;border:1px solid var(--border);">
+              🗺️
+              <span style="font-size:16px;color:var(--text-light);margin-left:12px">Map view</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Booking Card -->
+        <div>
+          <div class="booking-card">
+            <div class="booking-price">
+              <span class="price-original" id="original-price">₹36,291</span>
+              <span class="price-current" id="current-price">₹31,755</span>
+              <span class="price-night">for 2 nights</span>
+            </div>
+
+            <div class="booking-form">
+              <div class="date-grid">
+                <div class="date-input">
+                  <label>CHECK-IN</label>
+                  <input type="date" id="booking-checkin">
+                </div>
+                <div class="date-input">
+                  <label>CHECKOUT</label>
+                  <input type="date" id="booking-checkout">
+                </div>
+              </div>
+              <div class="guests-select">
+                <div>
+                  <label>GUESTS</label>
+                  <select>
+                    <option>1 guest</option>
+                    <option>2 guests</option>
+                    <option>3 guests</option>
+                    <option>4 guests</option>
+                    <option>6 guests</option>
+                    <option>8 guests</option>
+                  </select>
+                </div>
+                <span>⌄</span>
+              </div>
+            </div>
+
+            <button class="reserve-btn btn-ripple" onclick="reserveHandler()">Reserve</button>
+            <p class="no-charge">You won't be charged yet</p>
+
+            <div class="price-breakdown">
+              <div class="price-row">
+                <span id="price-per-night-row">₹4,200 × 2 nights</span>
+                <span id="subtotal">₹8,400</span>
+              </div>
+              <div class="price-row">
+                <span><a href="#">Cleaning fee</a></span>
+                <span id="cleaning-fee">₹500</span>
+              </div>
+              <div class="price-row">
+                <span><a href="#">Airbnb service fee</a></span>
+                <span id="service-fee">₹1,176</span>
+              </div>
+              <div class="price-row total">
+                <span>Total before taxes</span>
+                <span id="total-price">₹10,076</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align:center;margin-top:16px;">
+            <a href="#" style="font-size:13px;color:var(--text-light);text-decoration:underline;display:flex;align-items:center;justify-content:center;gap:6px;">⚑ Report this listing</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reviews Section -->
+      <div class="reviews-section">
+        <div class="reviews-header">
+          <span>★</span>
+          <span class="overall-rating" id="reviews-rating">4.93</span>
+          <h2 id="reviews-count">· 189 reviews</h2>
+        </div>
+        <div class="reviews-grid" id="reviews-grid">
+          <!-- Reviews rendered by JS -->
+        </div>
+      </div>
+
+    </div><!-- end container -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <span>© 2026 Airbnb Clone</span>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/animations.js"></script>
+<script>
+// Load listing details from JSON
+async function loadListingDetails() {
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get('id')) || 1;
+
+  try {
+    const res = await fetch('../data/listings.json');
+    const listings = await res.json();
+    const listing = listings.find(l => l.id === id) || listings[0];
+
+    // Set page title
+    document.title = `${listing.title} – Airbnb Clone`;
+    document.getElementById('listing-title').textContent = listing.title;
+    document.getElementById('listing-type').textContent = `Entire ${listing.type.toLowerCase()} in ${listing.location}`;
+    document.getElementById('listing-specs').textContent = `${listing.guests} guests · ${listing.bedrooms} bedrooms · ${listing.beds} beds · ${listing.bathrooms} bathrooms`;
+    document.getElementById('detail-rating').textContent = listing.rating;
+    document.getElementById('detail-reviews').textContent = `${listing.reviews} Reviews`;
+    document.getElementById('host-name').textContent = `Hosted by ${listing.host}`;
+    document.getElementById('host-super').textContent = `${listing.superhost ? 'Superhost · ' : ''}Verified host`;
+    document.getElementById('host-avatar').textContent = listing.host[0];
+    document.getElementById('listing-description').textContent = listing.description;
+    document.getElementById('listing-map-location').textContent = listing.location;
+    document.getElementById('reviews-rating').textContent = listing.rating;
+    document.getElementById('reviews-count').textContent = `· ${listing.reviews} reviews`;
+
+    // Prices
+    const nightlyPrice = listing.price;
+    document.body.dataset.price = nightlyPrice;
+    document.getElementById('current-price').textContent = `₹${(nightlyPrice * 2).toLocaleString('en-IN')}`;
+    document.getElementById('original-price').textContent = `₹${(nightlyPrice * 2.2).toLocaleString('en-IN')}`;
+    document.getElementById('price-per-night-row').textContent = `₹${nightlyPrice.toLocaleString('en-IN')} × 2 nights`;
+    document.getElementById('subtotal').textContent = `₹${(nightlyPrice * 2).toLocaleString('en-IN')}`;
+
+    // Gallery
+    const imgs = listing.images || [listing.image];
+    document.getElementById('gallery-img-0').src = imgs[0] || listing.image;
+    document.getElementById('gallery-img-1').src = imgs[1] || imgs[0];
+    document.getElementById('gallery-img-2').src = imgs[2] || imgs[0];
+    initGalleryModal(imgs);
+
+    // Amenity icons map
+    const amenityIcons = {
+      'WiFi': '📶', 'Air conditioning': '❄️', 'Kitchen': '🍳', 'TV': '📺',
+      'Washer': '🫧', 'Pool': '🏊', 'Gym': '💪', 'Parking': '🚗',
+      'Fireplace': '🔥', 'BBQ': '🍖', 'Breakfast': '🥐', 'Chef': '👨‍🍳',
+      'Hot tub': '♨️', 'Beach access': '🏖️', 'Heating': '🌡️',
+      'Garden': '🌿', 'Balcony': '🏞️', 'Rooftop terrace': '🌆',
+      'Self check-in': '🚪', 'Sea view': '🌊', 'Boat access': '⛵',
+      'Diving': '🤿', 'Water sports': '🏄', 'Hiking trails': '🥾',
+      'Campfire': '🔥', 'Wine tasting': '🍷', 'Farm tours': '🌾',
+      'Nature trails': '🌲', 'Stargazing equipment': '🔭', 'Fishing': '🎣',
+      'Kayaking': '🛶', 'Infinity Pool': '🏊', 'Home theatre': '🎬',
+      'Caretaker': '👷'
+    };
+
+    // Render amenities
+    const grid = document.getElementById('amenities-grid');
+    listing.amenities.forEach(a => {
+      const div = document.createElement('div');
+      div.className = 'amenity-item';
+      div.innerHTML = `<span class="icon">${amenityIcons[a] || '✓'}</span> ${a}`;
+      grid.appendChild(div);
+    });
+
+    // Wishlist button
+    const saveBtn = document.getElementById('save-btn');
+    const wishlisted = isWishlisted(listing.id);
+    saveBtn.textContent = wishlisted ? '❤️ Saved' : '🤍 Save';
+    saveBtn.addEventListener('click', () => {
+      toggleWishlist(listing.id, { classList: { add: () => {}, remove: () => {} }, querySelector: () => ({ textContent: '' }) });
+      saveBtn.textContent = isWishlisted(listing.id) ? '❤️ Saved' : '🤍 Save';
+    });
+
+    // Render reviews
+    const sampleReviews = [
+      { name: 'Arjun S.', date: 'February 2026', text: 'Absolutely stunning property! The views are incredible and the host was super responsive. Would definitely come back.', avatar: 'A' },
+      { name: 'Priya M.', date: 'January 2026', text: 'Perfect for our group trip. Spacious, clean, and all amenities as described. Great location too!', avatar: 'P' },
+      { name: 'Rahul K.', date: 'December 2025', text: 'One of the best Airbnbs I ve stayed at. The interior is beautiful and the neighbourhood is safe and walkable.', avatar: 'R' },
+      { name: 'Sneha T.', date: 'November 2025', text: 'Loved every moment of our stay. The host went above and beyond. Highly recommend!', avatar: 'S' },
+    ];
+
+    const reviewsGrid = document.getElementById('reviews-grid');
+    sampleReviews.forEach(r => {
+      reviewsGrid.innerHTML += `
+        <div class="review-card">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">${r.avatar}</div>
+            <div>
+              <div class="reviewer-name">${r.name}</div>
+              <div class="review-date">${r.date}</div>
+            </div>
+          </div>
+          <p class="review-text">${r.text}</p>
+        </div>
+      `;
+    });
+
+  } catch(e) {
+    console.error(e);
+  }
+}
+
+function shareHandler() { showToast('Link copied to clipboard! 🔗'); }
+function reserveHandler() { window.location.href = 'booking.html'; }
+
+document.addEventListener('DOMContentLoaded', loadListingDetails);
+</script>
+</body>
+</html>

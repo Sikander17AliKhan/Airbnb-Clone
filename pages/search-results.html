@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results – Airbnb </title>
+  <link rel="icon" href="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/airbnb-favicon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/cards.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body data-page="search">
+<div class="page-wrapper">
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="navbar-inner">
+      <a href="/airbnb-clone/index.html" class="navbar-logo">
+        <img src="/airbnb-clone/{pages,css,js,data,assets/{images,icons}}/Airbnb-Logo.png" alt="Airbnb Logo" class="logo-img">
+      </a>
+      <form class="navbar-search-compact visible" style="max-width:480px" onsubmit="return false">
+        <div class="compact-field" id="search-display-where">Anywhere</div>
+        <div class="compact-field">Any week</div>
+        <div class="compact-field">Add guests</div>
+        <button class="compact-search-btn">🔍</button>
+      </form>
+      <div class="navbar-right">
+        <a href="host-dashboard.html" class="navbar-host">Become a host</a>
+        <button class="navbar-globe">🌐</button>
+        <button class="navbar-profile-btn" id="profile-btn">
+          <span class="hamburger">☰</span>
+          <span class="profile-icon">👤</span>
+        </button>
+      </div>
+    </div>
+    <div class="profile-dropdown" id="profile-dropdown">
+      <div class="dropdown-group">
+        <a href="signup.html" class="dropdown-item bold">Sign up</a>
+        <a href="login.html" class="dropdown-item">Log in</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="search-results-page">
+    <div class="container">
+      <div class="search-results-layout">
+        <div>
+          <!-- Filter Bar -->
+          <div class="filter-bar">
+            <button class="filter-chip active">All</button>
+            <button class="filter-chip">Price range</button>
+            <button class="filter-chip">Rooms & beds</button>
+            <button class="filter-chip">Amenities</button>
+            <button class="filter-chip">Superhost</button>
+          </div>
+          <!-- Results header -->
+          <div class="results-header">
+            <div class="results-count" id="results-count">Loading...</div>
+            <h2 class="results-title" id="search-title">Stays</h2>
+          </div>
+          <!-- Results Grid -->
+          <div class="listings-grid" id="search-results-grid"></div>
+        </div>
+        <!-- Map -->
+        <div class="map-placeholder">
+          🗺️
+          <p>Map view</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</div>
+<script src="../js/app.js"></script>
+<script src="../js/listings.js"></script>
+<script src="../js/animations.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const where = params.get('where') || 'Anywhere';
+    const displayWhere = document.getElementById('search-display-where');
+    if (displayWhere) displayWhere.textContent = where;
+  });
+</script>
+</body>
+</html>
